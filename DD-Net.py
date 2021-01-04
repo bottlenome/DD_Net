@@ -1,5 +1,8 @@
 from __future__ import print_function
 import tensorflow as tf
+import matplotlib
+matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
 from scipy.misc import imresize
 import numpy as np
@@ -329,7 +332,8 @@ if __name__ == '__main__':
 
     test_img120 = np.zeros((test_num, row * column), dtype=np.float32)
     for i in range(batch):
-        test_img120[i] = np.reshape(np.transpose(scipy.io.loadmat('FBP120_512_57_19_156.mat')['img_FBP120']), [1, size])
+        # test_img120[i] = np.reshape(np.transpose(scipy.io.loadmat('FBP120_512_57_19_156.mat')['img_FBP120']), [1, size])
+        test_img120[i] = np.reshape(np.transpose(scipy.io.loadmat('FBP120_512_38_19_112.mat')['img_FBP120']), [1, size])
 
 
     ##################################################################################################################################
@@ -352,6 +356,8 @@ if __name__ == '__main__':
         plt.subplot(122)
         plt.imshow(DL_120, interpolation="nearest", clim=(0., 0.029), cmap="gray")
         plt.title('DL20')
-        plt.pause(100000)
+        # plt.pause(100000)
+        # plt.savefig('figure.png')
+        plt.savefig('figure_38_19_112.png')
 
     print('end')
